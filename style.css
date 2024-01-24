@@ -1,0 +1,29 @@
+body{
+    background-color: royalblue;
+}
+h1{
+    color: white;
+}
+p{
+    color: white;
+    font-size: 32px;
+}
+label{
+    color: white;
+}
+input{ 
+    color: gray;
+    text-align: center; 
+}
+label, input{
+    margin-bottom: 5px;
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+button{
+    background-color: royalblue;
+    color: white;
+    border-color: white;
+    height: 8vh;
+    width: 15vh;
+}
