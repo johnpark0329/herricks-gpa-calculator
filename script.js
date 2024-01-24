@@ -7,6 +7,7 @@ let class5;
 let class6;
 let class7;
 let class8;
+let class9;
 
 // Declaring grade letter variables.
 let gradeClass1;
@@ -17,6 +18,7 @@ let gradeClass5;
 let gradeClass6;
 let gradeClass7;
 let gradeClass8;
+let gradeClass9;
 
 // Declaring weight variables.
 let weightClass1;
@@ -27,6 +29,7 @@ let weightClass5;
 let weightClass6;
 let weightClass7;
 let weightClass8;
+let weightClass9;
 
 document.getElementById("submit").onclick = function(){
     class1 = document.getElementById("class1").value;
@@ -37,6 +40,7 @@ document.getElementById("submit").onclick = function(){
     class6 = document.getElementById("class6").value;
     class7 = document.getElementById("class7").value;
     class8 = document.getElementById("class8").value;
+    class9 = document.getElementById("class9").value;
 
     gradeClass1 = document.getElementById("gradeClass1").value;
     gradeClass2 = document.getElementById("gradeClass2").value;
@@ -46,21 +50,26 @@ document.getElementById("submit").onclick = function(){
     gradeClass6 = document.getElementById("gradeClass6").value;
     gradeClass7 = document.getElementById("gradeClass7").value;
     gradeClass8 = document.getElementById("gradeClass8").value;
+    gradeClass9 = document.getElementById("gradeClass9").value;
 
-    weightClass1 = document.getElementById("weightClass1").value;
-    weightClass2 = document.getElementById("weightClass2").value;
-    weightClass3 = document.getElementById("weightClass3").value;
-    weightClass4 = document.getElementById("weightClass4").value;
-    weightClass5 = document.getElementById("weightClass5").value;
-    weightClass6 = document.getElementById("weightClass6").value;
-    weightClass7 = document.getElementById("weightClass7").value;
-    weightClass8 = document.getElementById("weightClass8").value;
+    weightClass1 = document.getElementById("weightClass1").checked;
+    weightClass2 = document.getElementById("weightClass2").checked;
+    weightClass3 = document.getElementById("weightClass3").checked;
+    weightClass4 = document.getElementById("weightClass4").checked;
+    weightClass5 = document.getElementById("weightClass5").checked;
+    weightClass6 = document.getElementById("weightClass6").checked;
+    weightClass7 = document.getElementById("weightClass7").checked;
+    weightClass8 = document.getElementById("weightClass8").checked;
+    weightClass9 = document.getElementById("weightClass9").checked;
+
+    isWeighted = weightClass1 || weightClass2 || weightClass3 || weightClass4 || weightClass5 || weightClass6 || weightClass7 || weightClass8 || weightClass9;
 
     let unweightedGPA = calculateUnweightedGPA();
     let weightedGPA = calculateWeightedGPA();
 
     document.getElementById("resultUnweighted").innerText = "Your Unweighted GPA Is : " + unweightedGPA;
     document.getElementById("resultWeighted").innerText = "Your Weighted GPA Is : " + weightedGPA;
+    document.getElementById("conclusion").innerText = "Remember, your GPA does not define who you are!";
 
 }
 
@@ -95,32 +104,29 @@ function letterToNumber(grade){
 }
 
 function weightedGrade(weightUp, grade) {
-    if ((weightUp.toLowerCase() === "yes" || weightUp.toLowerCase() === "y") && letterToNumber(grade) == 4.0) {
+    if ((isWeighted && letterToNumber(grade) == 4.0)){
         return 4.3333;
     } 
-    else if ((weightUp.toLowerCase() === "yes" || weightUp.toLowerCase() === "y") && letterToNumber(grade) == 3.66) {
-        return 4.0000;
+    else if ((isWeighted && letterToNumber(grade) == 3.66)){ 
+       return 4.0000;
     } 
-    else if ((weightUp.toLowerCase() === "yes" || weightUp.toLowerCase() === "y") && letterToNumber(grade) == 3.33) {
+    else if ((isWeighted && letterToNumber(grade) == 3.33)){        
         return 3.6666;
     } 
-    else if ((weightUp.toLowerCase() === "yes" || weightUp.toLowerCase() === "y") && letterToNumber(grade) == 3.0) {
+    else if ((isWeighted && letterToNumber(grade) == 3.0)){        
         return 3.3333;
     } 
-    else if ((weightUp.toLowerCase() === "yes" || weightUp.toLowerCase() === "y") && letterToNumber(grade) == 2.5) {
+    else if ((isWeighted && letterToNumber(grade) == 2.5)){        
         return 3.0000;
     } 
-    else if ((weightUp.toLowerCase() === "yes" || weightUp.toLowerCase() === "y") && letterToNumber(grade) == 2.0) {
+    else if ((isWeighted && letterToNumber(grade) == 2.0)){        
         return 2.5000;
     } 
-    else if ((weightUp.toLowerCase() === "yes" || weightUp.toLowerCase() === "y") && letterToNumber(grade) == 1.0) {
+    else if ((isWeighted && letterToNumber(grade) == 1.0)){        
         return 2.0000;
     } 
-    else if ((weightUp.toLowerCase() === "yes" || weightUp.toLowerCase() === "y") && letterToNumber(grade) == 0.0) {
+    else if ((isWeighted && letterToNumber(grade) == 0.0)){        
         return 1.0000;
-    } 
-    else if (weightUp.toLowerCase() === "no" || weightUp.toLowerCase() === "n") {
-        return letterToNumber(grade);
     } 
     else {
         return -1;
@@ -147,6 +153,7 @@ processClass(gradeClass5);
 processClass(gradeClass6);
 processClass(gradeClass7);
 processClass(gradeClass8);
+processClass(gradeClass9);
 
 if (numClasses === 0) {
     return "No Valid Grades Entered, Try Again.";
@@ -169,14 +176,15 @@ function calculateWeightedGPA(){
         }
     }
 
-processClass(weightClass1, gradeClass1);
-processClass(weightClass2, gradeClass2);
-processClass(weightClass3, gradeClass3);
-processClass(weightClass4, gradeClass4);
-processClass(weightClass5, gradeClass5);
-processClass(weightClass6, gradeClass6);
-processClass(weightClass7, gradeClass7);
-processClass(weightClass8, gradeClass8);
+processClass(weightClass1.checked, gradeClass1);
+processClass(weightClass2.checked, gradeClass2);
+processClass(weightClass3.checked, gradeClass3);
+processClass(weightClass4.checked, gradeClass4);
+processClass(weightClass5.checked, gradeClass5);
+processClass(weightClass6.checked, gradeClass6);
+processClass(weightClass7.checked, gradeClass7);
+processClass(weightClass8.checked, gradeClass8);
+processClass(weightClass9.checked, gradeClass9);
 
 if (numClasses === 0) {
     return "No Valid Grades Entered, Try Again.";
