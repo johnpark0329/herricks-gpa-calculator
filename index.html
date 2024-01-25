@@ -1,28 +1,38 @@
 <html>
     <title> Herricks GPA Calculator </title>
+
+<!-- Linking style.css to index.html. -->
     <link rel="stylesheet" href="style.css">
+
     <body>
         <h1 align="center"> Herricks High School GPA Calculator </h1>
-<!--Creating labels and input boxes for names of classes.-->
-    <img src="logo.png" alt="Herricks Logo">
-    <center> 
-        <label> Class Name </label> <input id="class1"> <label> Grade </label> <input id="gradeClass1"> <label> AP Or Honors? </label> <input type="checkbox" id="weightClass1"> <br>
-        <label> Class Name </label> <input id="class2"> <label> Grade </label> <input id="gradeClass2"> <label> AP Or Honors? </label> <input type="checkbox" id="weightClass2"> <br>
-        <label> Class Name </label> <input id="class3"> <label> Grade </label> <input id="gradeClass3"> <label> AP Or Honors? </label> <input type="checkbox" id="weightClass3"> <br>
-        <label> Class Name </label> <input id="class4"> <label> Grade </label> <input id="gradeClass4"> <label> AP Or Honors? </label> <input type="checkbox" id="weightClass4"> <br>
-        <label> Class Name </label> <input id="class5"> <label> Grade </label> <input id="gradeClass5"> <label> AP Or Honors? </label> <input type="checkbox" id="weightClass5"> <br>
-        <label> Class Name </label> <input id="class6"> <label> Grade </label> <input id="gradeClass6"> <label> AP Or Honors? </label> <input type="checkbox" id="weightClass6"> <br>
-        <label> Class Name </label> <input id="class7"> <label> Grade </label> <input id="gradeClass7"> <label> AP Or Honors? </label> <input type="checkbox" id="weightClass7"> <br>
-        <label> Class Name </label> <input id="class8"> <label> Grade </label> <input id="gradeClass8"> <label> AP Or Honors? </label> <input type="checkbox" id="weightClass8"> <br>
-        <label> Class Name </label> <input id="class9"> <label> Grade </label> <input id="gradeClass9"> <label> AP Or Honors? </label> <input type="checkbox" id="weightClass9"> <br>
 
+<!-- Creating Herricks logo image. -->
+        <img src="logo.png" alt="Herricks Logo">
+    
+    <center> 
+
+<!-- Creating labels and input boxes for names of classes. -->
+        <label> Class Name </label> <input id="class1"> <label> Grade </label> <input id="gradeClass1"> <label> AP Or Honors? </label> <input type="checkbox" value = "yes" id="weightClass1"> <br>
+        <label> Class Name </label> <input id="class2"> <label> Grade </label> <input id="gradeClass2"> <label> AP Or Honors? </label> <input type="checkbox" value = "yes" id="weightClass2"> <br>
+        <label> Class Name </label> <input id="class3"> <label> Grade </label> <input id="gradeClass3"> <label> AP Or Honors? </label> <input type="checkbox" value = "yes" id="weightClass3"> <br>
+        <label> Class Name </label> <input id="class4"> <label> Grade </label> <input id="gradeClass4"> <label> AP Or Honors? </label> <input type="checkbox" value = "yes" id="weightClass4"> <br>
+        <label> Class Name </label> <input id="class5"> <label> Grade </label> <input id="gradeClass5"> <label> AP Or Honors? </label> <input type="checkbox" value = "yes" id="weightClass5"> <br>
+        <label> Class Name </label> <input id="class6"> <label> Grade </label> <input id="gradeClass6"> <label> AP Or Honors? </label> <input type="checkbox" value = "yes" id="weightClass6"> <br>
+        <label> Class Name </label> <input id="class7"> <label> Grade </label> <input id="gradeClass7"> <label> AP Or Honors? </label> <input type="checkbox" value = "yes" id="weightClass7"> <br>
+        <label> Class Name </label> <input id="class8"> <label> Grade </label> <input id="gradeClass8"> <label> AP Or Honors? </label> <input type="checkbox" value = "yes" id="weightClass8"> <br>
+        <label> Class Name </label> <input id="class9"> <label> Grade </label> <input id="gradeClass9"> <label> AP Or Honors? </label> <input type="checkbox" value = "yes" id="weightClass9"> <br>
+
+<!-- Creating button to trigger GPA calculations. -->
         <button id="submit"> Calculate Your GPA! </button>
 
+<!-- Placeholder paragraphs for displaying GPA results and the conclusion. -->
         <p id="resultUnweighted"></p>
         <p id="resultWeighted"></p>
         <p id="conclusion"></p>
 
+<!-- Connecting the JavaScript file. -->
         <script src="script.js"></script>
-        </center>
+    </center>
     </body>
 </html>
