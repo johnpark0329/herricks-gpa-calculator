@@ -1,5 +1,5 @@
 // Declaring class name variables.
-let class1;
+let class1; 
 let class2;
 let class3;
 let class4;
@@ -31,7 +31,9 @@ let weightClass7;
 let weightClass8;
 let weightClass9;
 
+// Set up click event handler for the "submit" button.
 document.getElementById("submit").onclick = function(){
+// Retrieves values from input fields after "submit" button is clicked and stores in variables declared earlier.
     class1 = document.getElementById("class1").value;
     class2 = document.getElementById("class2").value;
     class3 = document.getElementById("class3").value;
@@ -62,17 +64,17 @@ document.getElementById("submit").onclick = function(){
     weightClass8 = document.getElementById("weightClass8").checked;
     weightClass9 = document.getElementById("weightClass9").checked;
 
-    isWeighted = weightClass1 || weightClass2 || weightClass3 || weightClass4 || weightClass5 || weightClass6 || weightClass7 || weightClass8 || weightClass9;
-
+// Create variables to call the functions created.
     let unweightedGPA = calculateUnweightedGPA();
     let weightedGPA = calculateWeightedGPA();
 
+// Telling what to output in HTML.
     document.getElementById("resultUnweighted").innerText = "Your Unweighted GPA Is : " + unweightedGPA;
     document.getElementById("resultWeighted").innerText = "Your Weighted GPA Is : " + weightedGPA;
     document.getElementById("conclusion").innerText = "Remember, your GPA does not define who you are!";
-
 }
 
+// Function to convert letter grades to numbers.
 function letterToNumber(grade){
     if (grade == "A+" || grade == "a+"){
         return 4.0;
@@ -103,40 +105,28 @@ function letterToNumber(grade){
     }
 }
 
+// Function to boost grade if class is weighted.
 function weightedGrade(weightUp, grade) {
-    if ((isWeighted && letterToNumber(grade) == 4.0)){
-        return 4.3333;
-    } 
-    else if ((isWeighted && letterToNumber(grade) == 3.66)){ 
-       return 4.0000;
-    } 
-    else if ((isWeighted && letterToNumber(grade) == 3.33)){        
-        return 3.6666;
-    } 
-    else if ((isWeighted && letterToNumber(grade) == 3.0)){        
-        return 3.3333;
-    } 
-    else if ((isWeighted && letterToNumber(grade) == 2.5)){        
-        return 3.0000;
-    } 
-    else if ((isWeighted && letterToNumber(grade) == 2.0)){        
-        return 2.5000;
-    } 
-    else if ((isWeighted && letterToNumber(grade) == 1.0)){        
-        return 2.0000;
-    } 
-    else if ((isWeighted && letterToNumber(grade) == 0.0)){        
-        return 1.0000;
-    } 
-    else {
+    let numericGrade = letterToNumber(grade);
+    if (numericGrade >= 0){
+        if (weightUp === true){
+            return numericGrade + 0.3400;
+        }
+        else{
+            return numericGrade;
+        }
+    }
+    else{
         return -1;
     }
 }
 
+// Calculates unweighted GPA without taking AP/Honors into consideration.
 function calculateUnweightedGPA(){
     let gradePointsUnweighted = 0;
     let numClasses = 0;
 
+// Process individual grades and combine the different grades while incrementing number of classes.
     function processClass(grade){
         let numericGrade = letterToNumber(grade);
         if (numericGrade >= 0){
@@ -145,6 +135,7 @@ function calculateUnweightedGPA(){
         }
     }
 
+// Convert and add the numeric values of grades to the GPA calculation.
 processClass(gradeClass1);
 processClass(gradeClass2);
 processClass(gradeClass3);
@@ -155,41 +146,48 @@ processClass(gradeClass7);
 processClass(gradeClass8);
 processClass(gradeClass9);
 
+// If no classes are entered, makes user submit inputs again.
 if (numClasses === 0) {
     return "No Valid Grades Entered, Try Again.";
 }
 
+// Create variable with the final unweighted GPA rounded to four decimal points and returns the variable.
 let unweightedOutput = gradePointsUnweighted / numClasses;
 unweightedOutput = unweightedOutput.toFixed(4);
 return unweightedOutput;
 }
 
+// Calculates weighted GPA  taking AP/Honors into consideration.
 function calculateWeightedGPA(){
     let gradePointsWeighted = 0;
     let numClasses = 0;
-    
-    function processClass(weightUp, grade){
+
+// Process individual grades and combine the different grades while incrementing number of classes.
+function processClass(weightUp, grade){
         let numericGrade = weightedGrade(weightUp, grade);
         if (numericGrade >= 0){
             gradePointsWeighted += numericGrade;
             numClasses++;
-        }
+        }   
     }
 
-processClass(weightClass1.checked, gradeClass1);
-processClass(weightClass2.checked, gradeClass2);
-processClass(weightClass3.checked, gradeClass3);
-processClass(weightClass4.checked, gradeClass4);
-processClass(weightClass5.checked, gradeClass5);
-processClass(weightClass6.checked, gradeClass6);
-processClass(weightClass7.checked, gradeClass7);
-processClass(weightClass8.checked, gradeClass8);
-processClass(weightClass9.checked, gradeClass9);
+// Convert and add the numeric values of grades to the GPA calculation.
+processClass(weightClass1, gradeClass1);
+processClass(weightClass2, gradeClass2);
+processClass(weightClass3, gradeClass3);
+processClass(weightClass4, gradeClass4);
+processClass(weightClass5, gradeClass5);
+processClass(weightClass6, gradeClass6);
+processClass(weightClass7, gradeClass7);
+processClass(weightClass8, gradeClass8);
+processClass(weightClass9, gradeClass9);
 
+// If no classes are entered, makes user submit inputs again.
 if (numClasses === 0) {
     return "No Valid Grades Entered, Try Again.";
 }
 
+// Create variable with the final weighted GPA rounded to four decimal points and returns the variable.
 let weightedOutput = gradePointsWeighted / numClasses;
 weightedOutput = weightedOutput.toFixed(4);
 return weightedOutput;
